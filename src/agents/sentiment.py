@@ -19,7 +19,7 @@ def sentiment_agent(state: AgentState):
     symbol = data["ticker"]
     logger.info(f"正在分析股票: {symbol}")
     # 从命令行参数获取新闻数量，默认为5条
-    num_of_news = data.get("num_of_news", 5)
+    num_of_news = data.get("num_of_news", 10)
 
     # 获取新闻数据并分析情感
     news_list = get_stock_news(symbol, max_news=num_of_news)  # 确保获取足够的新闻

@@ -91,11 +91,14 @@ def run_hedge_fund(run_id: str, ticker: str, start_date: str, end_date: str, por
         with workflow_run(run_id):
             final_state = app.invoke(initial_state)
             print(f"--- Finished Workflow Run ID: {run_id} ---")
-
+            
             if HAS_SUMMARY_REPORT and show_summary:
                 store_final_state(final_state)
                 enhanced_state = get_enhanced_final_state()
                 print_summary_report(enhanced_state)
+
+            if show_summary:
+                print_structured_output(final_state)
 
             if HAS_STRUCTURED_OUTPUT and show_reasoning:
                 print_structured_output(final_state)
@@ -107,6 +110,9 @@ def run_hedge_fund(run_id: str, ticker: str, start_date: str, end_date: str, por
             store_final_state(final_state)
             enhanced_state = get_enhanced_final_state()
             print_summary_report(enhanced_state)
+            
+        if show_summary:
+            print_structured_output(final_state)
 
         if HAS_STRUCTURED_OUTPUT and show_reasoning:
             print_structured_output(final_state)
@@ -196,9 +202,9 @@ if __name__ == "__main__":
                         help='End date (YYYY-MM-DD). Defaults to yesterday')
     parser.add_argument('--show-reasoning', action='store_true',
                         help='Show reasoning from each agent')
-    parser.add_argument('--num-of-news', type=int, default=5,
+    parser.add_argument('--num-of-news', type=int, default=10,
                         help='Number of news articles to analyze for sentiment (default: 5)')
-    parser.add_argument('--initial-capital', type=float, default=100000.0,
+    parser.add_argument('--initial-capital', type=float, default=62000.0,
                         help='Initial cash amount (default: 100,000)')
     parser.add_argument('--initial-position', type=int,
                         default=0, help='Initial stock position (default: 0)')
