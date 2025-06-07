@@ -102,7 +102,7 @@ Poetry 是一个用于 Python 依赖管理和打包的工具。
 **Unix/macOS:**
 
 ```bash
-curl -sSL [https://install.python-poetry.org](https://install.python-poetry.org) | python3 -
+curl -sSL https://install.python-poetry.org | python3 -
 ```
 
 ### 2. 安装项目依赖
