@@ -1,0 +1,12 @@
+{
+  "tickers": ["002848", "000001"],
+  "run_times": ["10:00", "15:00"],
+  "backend_url": "http://localhost:8000",
+  "total_cash": 100000.0,
+  "portfolio": {
+    "cash": 100000.0,
+    "positions": {
+      "002848": {"shares": 50, "value": 0}
+    }
+  }
+}
